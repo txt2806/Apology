@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 Gửi em...</title>
+    <meta name="description" content="Một bức thư đặc biệt dành cho em">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-bg" id="hearts-bg"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- SCREEN 1: Envelope -->
+    <section class="screen screen-envelope active" id="screen-envelope">
+        <div class="envelope-scene">
+            <h1 class="title-text">Em có một bức thư...</h1>
+            <p class="subtitle-text">Bấm vào phong bì để mở nhé 💕</p>
+            
+            <div class="envelope-container" id="envelope" onclick="openEnvelope()">
+                <div class="envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <div class="envelope-heart">❤️</div>
+                    </div>
+                    <div class="envelope-shadow"></div>
+                </div>
+                <div class="sparkles">
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle">✨</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCREEN 2: Letter Content -->
+    <section class="screen screen-letter" id="screen-letter">
+        <div class="letter-container">
+            <div class="letter-paper">
+                <div class="letter-decoration top-left">❀</div>
+                <div class="letter-decoration top-right">❀</div>
+                <div class="letter-decoration bottom-left">❀</div>
+                <div class="letter-decoration bottom-right">❀</div>
+                <div class="letter-content" id="letter-content">
+                    <!-- Content from text.txt will be loaded here -->
+                </div>
+                <!-- Reason modal -->
+                <div class="reason-modal-overlay" id="reason-modal-overlay" onclick="closeReasonModal()">
+                    <div class="reason-modal" onclick="event.stopPropagation()">
+                        <div class="reason-modal-header">
+                            <span>💌 Lý do...</span>
+                            <button class="reason-close-btn" onclick="closeReasonModal()">✕</button>
+                        </div>
+                        <div class="reason-modal-content" id="reason-content"></div>
+                    </div>
+                </div>
+                <button class="btn-read-done" id="btn-read-done" onclick="showQuestion()">
+                    <span>Đọc xong rồi</span>
+                    <span class="btn-heart">💝</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCREEN 3: Question -->
+    <section class="screen screen-question" id="screen-question">
+        <div class="question-container">
+            <div class="question-heart-big">💗</div>
+            <h2 class="question-text" id="question-text">Em có sẵn lòng cho anh thêm 1 cơ hội nữa được không?</h2>
+            <div class="buttons-container" id="buttons-container">
+                <button class="btn-yes" id="btn-yes" onclick="sayYes()">
+                    <span>Có 💕</span>
+                </button>
+                <button class="btn-no" id="btn-no" onmouseover="moveNoButton(event)" ontouchstart="moveNoButton(event)" onclick="moveNoButton(event)">
+                    <span>Không 💔</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCREEN 4: Thank You / Final -->
+    <section class="screen screen-final" id="screen-final">
+        <div class="final-container">
+            <div class="celebration" id="celebration"></div>
+            <div class="final-heart-container">
+                <div class="final-heart">❤️</div>
+            </div>
+            <h2 class="final-title">Cảm ơn em! 🥰</h2>
+            <div class="final-content" id="final-content">
+                <!-- Content from text2.txt will be loaded here -->
+            </div>
+            <div class="final-hearts-rain" id="final-hearts-rain"></div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
