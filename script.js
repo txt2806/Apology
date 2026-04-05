@@ -212,13 +212,22 @@ function closeReasonModal() {
 
 // === SHOW QUESTION SCREEN ===
 function showQuestion() {
+    readyToDodge = false;
     switchScreen('screen-letter', 'screen-question');
+    // Only allow dodging after screen has fully appeared
+    setTimeout(() => {
+        readyToDodge = true;
+    }, 1000);
 }
 
 // === MOVE THE "NO" BUTTON AWAY ===
 let noMoveCount = 0;
+let readyToDodge = false;
 
 function moveNoButton(e) {
+    // Don't dodge until screen is fully visible
+    if (!readyToDodge) return;
+    
     // Prevent default touch behavior (prevents triggering click after touch)
     if (e && e.type === 'touchstart') {
         e.preventDefault();
