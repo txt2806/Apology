@@ -290,13 +290,40 @@ function moveNoButton(e) {
     btn.style.zIndex = '99999';
     btn.style.transition = 'left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
     
-    // Add fun messages after multiple attempts
+    // Show fun messages BELOW the button (not replacing button text)
+    const msg = document.getElementById('no-message');
     if (noMoveCount >= 3 && noMoveCount < 6) {
-        btn.querySelector('span').textContent = 'Đừng mà 🥺';
+        msg.textContent = 'Đừng mà 🥺';
     } else if (noMoveCount >= 6 && noMoveCount < 10) {
-        btn.querySelector('span').textContent = 'Bấm Có đi 😢';
-    } else if (noMoveCount >= 10) {
-        btn.querySelector('span').textContent = 'Anh xin em 😭';
+        msg.textContent = 'Bấm Có đi 😢';
+    } else if (noMoveCount >= 10 && noMoveCount < 15) {
+        msg.textContent = 'Anh xin em 😭';
+    } else if (noMoveCount >= 15) {
+        // Shake then launch like a rocket and disappear!
+        msg.textContent = '';
+        btn.querySelector('span').textContent = 'Bực mình rồi nhé 😤';
+        btn.onmouseover = null;
+        btn.ontouchstart = null;
+        btn.onclick = null;
+        btn.style.animation = 'shake 0.15s ease-in-out 8';
+        btn.style.background = 'rgba(255, 80, 80, 0.25)';
+        btn.style.borderColor = 'rgba(255, 80, 80, 0.5)';
+        btn.style.color = '#ff8080';
+        
+        // After shake, launch like a rocket
+        setTimeout(() => {
+            btn.style.animation = 'none';
+            btn.style.transition = 'all 0.6s cubic-bezier(0.55, -0.5, 0.1, 0.9)';
+            btn.style.transform = 'translateY(-120vh) rotate(720deg) scale(0.1)';
+            btn.style.opacity = '0';
+            
+            // Remove after animation
+            setTimeout(() => {
+                btn.remove();
+            }, 700);
+        }, 1200);
+        
+        return;
     }
     
     // Make yes button bigger over time
@@ -306,6 +333,12 @@ function moveNoButton(e) {
 
 // === USER SAYS YES ===
 function sayYes() {
+    // Hide the No button if it exists
+    const btnNo = document.getElementById('btn-no');
+    if (btnNo) {
+        btnNo.style.display = 'none';
+    }
+    
     // Create celebration effects
     createConfetti();
     createHeartsRain();

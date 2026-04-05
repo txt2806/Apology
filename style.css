@@ -585,11 +585,30 @@ body {
 }
 
 .btn-no {
-    color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: #e0c0cc;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 143, 171, 0.08));
+    border: 2px solid rgba(255, 143, 171, 0.25);
     backdrop-filter: blur(10px);
-    /* starts relative, JS switches to fixed on dodge */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+                0 0 15px rgba(255, 107, 138, 0.08);
+}
+
+.no-message {
+    font-size: 0.8rem;
+    color: var(--primary-light);
+    font-weight: 400;
+    min-height: 0;
+    opacity: 0.9;
+    animation: fadeIn 0.3s ease;
+}
+
+.btn-converted {
+    box-shadow: 0 8px 30px rgba(255, 51, 102, 0.4),
+                0 0 20px rgba(255, 107, 138, 0.2) !important;
 }
 
 /* === SCREEN 4: FINAL === */
